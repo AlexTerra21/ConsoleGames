@@ -10,6 +10,8 @@ namespace ConsoleGameLib
     {
         public int Width { get; set; }
         public int Height { get; set; }
+        public ConsoleColor FrameColor { get; set; }
+        public char FrameSymbol { get; set; }
 
         private List<List<Cell>> _field  = new List<List<Cell>>();
         public List<List<Cell>> Field
@@ -20,6 +22,8 @@ namespace ConsoleGameLib
         {
             Width = aWidth;
             Height = aHeight;
+            FrameColor = ConsoleColor.White;
+            FrameSymbol = '#';
             InitField();
         }
 
@@ -54,10 +58,10 @@ namespace ConsoleGameLib
         {
             Console.Clear();
             Console.CursorVisible = false;
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = FrameColor;
             for (int i = 0; i < Width + 2; i++)
             {
-                Console.Write("#");
+                Console.Write(FrameSymbol);
             }
             Console.WriteLine();
             //Console.ForegroundColor = ConsoleColor.White;
@@ -67,8 +71,8 @@ namespace ConsoleGameLib
                 {
                     if (j == 0 || j == Width + 1)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("#");
+                        Console.ForegroundColor = FrameColor;
+                        Console.Write(FrameSymbol);
                         //Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
@@ -79,10 +83,10 @@ namespace ConsoleGameLib
                 }
                 Console.WriteLine();
             }
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = FrameColor;
             for (int i = 0; i < Width + 2; i++)
             {
-                Console.Write("#");
+                Console.Write(FrameSymbol);
             }
             Console.WriteLine();
             //Console.ForegroundColor = ConsoleColor.White;

@@ -44,7 +44,6 @@
     <Compile Include="GameField.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="IDrawable.cs" />
-    <Compile Include="IGameObject.cs" />
     <Compile Include="IMovevable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
