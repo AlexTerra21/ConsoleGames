@@ -43,6 +43,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameField.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="IGameObject.cs" />
     <Compile Include="IMovevable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

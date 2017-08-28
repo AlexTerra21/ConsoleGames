@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleGameLib;
 
 namespace ConsoleGameLib
 {
-    public interface IDrawable
+    interface IGameObject : IMovable, IDrawable
     {
-        void SetField(GameField aGameField);
-        void Draw();
     }
 }

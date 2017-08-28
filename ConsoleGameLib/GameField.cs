@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameLib
 {
-    class GameField
+    public class GameField
     {
         public int Width { get; set; }
         public int Height { get; set; }

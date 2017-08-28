@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameLib
 {
-    abstract class Game 
+    public abstract class Game 
     {
-        private Random _rand = new Random(); 
-        private GameField _gameField;
-        private bool _gameOver; 
+        protected Random _rand = new Random(); 
+        protected GameField _gameField;
+        protected bool _gameOver; 
 
         public Game(int aWidth, int aHeight)
         {
@@ -18,7 +18,7 @@ namespace ConsoleGameLib
             _gameOver = false;
         }
 
-        private ConsoleKey ConsoleGetKey()
+        protected ConsoleKey ConsoleGetKey()
         {
             ConsoleKeyInfo lKey = new ConsoleKeyInfo();
             if (Console.KeyAvailable)
@@ -65,6 +65,7 @@ namespace ConsoleGameLib
             while (!_gameOver)
             {
                 _gameOver = Input();
+                if (_gameOver) continue;
                 _gameOver = Logic();
                 Draw();
                 System.Threading.Thread.Sleep(aDelay);

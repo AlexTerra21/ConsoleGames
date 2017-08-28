@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameLib
 {
-    interface IMovable
+    public interface IMovable
     {
         void DirectionLeft();
         void DirectionRight();

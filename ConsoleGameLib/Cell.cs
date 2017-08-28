@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameLib
 {
-    class Cell
+    public class Cell
     {
         public string Val { get; set; }
         public ConsoleColor Color { get; set; }
