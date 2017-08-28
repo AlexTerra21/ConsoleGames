@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleGameLib;
 
 namespace PingPong
 {
-    class Program
+    class PingPongGame : GameManager
     {
-        static void Main(string[] args)
+        public PingPongGame(int aWidth, int aHeight) : base (aWidth,aHeight)
         {
-            PingPongGame Game = new PingPongGame(60, 20);
-            Game.Run(100);
+            
         }
     }
 }

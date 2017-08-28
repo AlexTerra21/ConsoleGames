@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleGameLib;
 
 namespace PingPong
 {
-    class Ball
+    class Ball : GameObject
     {
         enum eDir { STOP = 0, LEFTUP, LEFT, LEFTDOWN, RIGHTUP, RIGHT, RIGHTDOWN }
 

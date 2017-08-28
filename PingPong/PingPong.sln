@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingPong", "PingPong.csproj", "{0FA69927-C5F8-42E9-8E79-83ADEEE48C7D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93273962-E15D-4EB1-9163-999B44FD745D} = {93273962-E15D-4EB1-9163-999B44FD745D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGameLib", "..\ConsoleGameLib\ConsoleGameLib.csproj", "{93273962-E15D-4EB1-9163-999B44FD745D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{0FA69927-C5F8-42E9-8E79-83ADEEE48C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FA69927-C5F8-42E9-8E79-83ADEEE48C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FA69927-C5F8-42E9-8E79-83ADEEE48C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93273962-E15D-4EB1-9163-999B44FD745D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93273962-E15D-4EB1-9163-999B44FD745D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93273962-E15D-4EB1-9163-999B44FD745D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93273962-E15D-4EB1-9163-999B44FD745D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
