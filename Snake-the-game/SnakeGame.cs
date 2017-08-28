@@ -7,7 +7,7 @@ using ConsoleGameLib;
 
 namespace Snake
 {
-    class SnakeGame : Game 
+    class SnakeGame : GameManager
     {
         private Snake _snake;
         private Fruit _fruit;

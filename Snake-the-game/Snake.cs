@@ -7,11 +7,10 @@ using ConsoleGameLib;
 
 namespace Snake
 {
-    class Snake : IMovable, IDrawable
+    class Snake : GameObject
     {
         private enum Direction { Stop = 0, Left, Right, Up, Down }
         private Direction Dir = Direction.Stop;
-        private GameField _gameField;
         public Point Head { get; set; }
         private List<Point> _tail = new List<Point>();
         public List<Point> Tail
@@ -19,15 +18,12 @@ namespace Snake
             get { return _tail; }
         }
 
-        public Snake(int aStartX, int aStartY)
+        public Snake(int aStartX, int aStartY) : base()
         {
             Head = new Point(aStartX, aStartY);
         }
 
-        public void SetField(GameField aGameField)
-        {
-            _gameField = aGameField;
-        }
+       
         public void Eat()
         {
             _tail.Insert(0,new Point(Head.X,Head.Y));
@@ -55,7 +51,7 @@ namespace Snake
             Dir = Direction.Down;
         }
 
-        public void Move()
+        public override void Move()
         {
             _tail.Insert(0, new Point(Head.X, Head.Y));
             _tail.RemoveAt(_tail.Count - 1);
@@ -78,7 +74,7 @@ namespace Snake
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             _gameField.Field[Head.Y][Head.X].Val = "O";
             _gameField.Field[Head.Y][Head.X].Color = ConsoleColor.Green;
@@ -89,4 +85,18 @@ namespace Snake
             }
         }
     }
+
+    class Point
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Point(int aX, int aY)
+        {
+            X = aX;
+            Y = aY;
+        }
+    }
+
+
 }

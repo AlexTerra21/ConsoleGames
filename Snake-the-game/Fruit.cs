@@ -7,22 +7,17 @@ using ConsoleGameLib;
 
 namespace Snake
 {
-    class Fruit : IDrawable
+    class Fruit : GameObject
     {
-        private GameField _gameField;
         private int _x;
         public int X { get { return _x; } }
         private int _y;
         public int Y { get { return _y; } }
 
-        public Fruit(int aX, int aY)
+        public Fruit(int aX, int aY) : base()
         {
             _x = aX;
             _y = aY;
-        }
-        public void SetField(GameField aGameField)
-        {
-            _gameField = aGameField;
         }
 
         public void ResetPosition(int aX, int aY)
@@ -30,7 +25,7 @@ namespace Snake
             _x = aX;
             _y = aY;
         }
-        public void Draw()
+        public override void Draw()
         {
             _gameField.Field[_y][_x].Val = "$";
             _gameField.Field[_y][_x].Color = ConsoleColor.Yellow;
