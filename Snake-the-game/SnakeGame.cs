@@ -14,12 +14,12 @@ namespace Snake
         
         public SnakeGame(int aWidth, int aHeight) : base (aWidth,aHeight)
         {
-            _gameField = new GameField(aWidth, aHeight);
+            _gameField.FrameColor = ConsoleColor.Red;
+            _gameField.FrameSymbol = (char)9632;
             _snake = new Snake(aWidth / 2, aHeight / 2);
             _snake.SetField(_gameField);
             _fruit = new Fruit(_rand.Next(aWidth), _rand.Next(aHeight));
             _fruit.SetField(_gameField);
-            _gameOver = false;
         }
 
         protected override bool Input()
