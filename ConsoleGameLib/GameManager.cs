@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameLib
 {
-    public abstract class Game 
+    public abstract class GameManager 
     {
         protected Random _rand = new Random(); 
         protected GameField _gameField;
         protected bool _gameOver; 
 
-        public Game(int aWidth, int aHeight)
+        public GameManager(int aWidth, int aHeight)
         {
             _gameField = new GameField(aWidth, aHeight);
             _gameOver = false;
