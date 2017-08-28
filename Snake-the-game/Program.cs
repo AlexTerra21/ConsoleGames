@@ -11,8 +11,8 @@ namespace Snake
         
         static void Main(string[] args)
         {
-            Game Game = new Game(40, 20);
-            Game.Run();
+            SnakeGame Game = new SnakeGame(40, 20);
+            Game.Run(100);
         }
     }
 }

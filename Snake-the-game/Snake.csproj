@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConsoleGameLib">
+      <HintPath>..\ConsoleGameLib\bin\Debug\ConsoleGameLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,13 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cell.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Fruit.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameField.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="IMovevable.cs" />
+    <Compile Include="SnakeGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snake.cs" />

@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleGameLib;
 
 namespace Snake
 {
-    class Game 
+    class SnakeGame : Game 
     {
-        private Random _rand = new Random(); 
         private Snake _snake;
         private Fruit _fruit;
-        private GameField _gameField;
-        private bool _gameOver; 
-
-        public Game(int aWidth, int aHeight)
+        
+        public SnakeGame(int aWidth, int aHeight) : base (aWidth,aHeight)
         {
             _gameField = new GameField(aWidth, aHeight);
             _snake = new Snake(aWidth / 2, aHeight / 2);
@@ -24,15 +22,9 @@ namespace Snake
             _gameOver = false;
         }
 
-        private bool Input()
+        protected override bool Input()
         {
-            ConsoleKeyInfo lKey = new ConsoleKeyInfo();
-            if (Console.KeyAvailable)
-            {
-                lKey = Console.ReadKey(true);
-            }
-          
-            switch (lKey.Key)
+            switch (ConsoleGetKey())
             {
                 case ConsoleKey.LeftArrow:
                     _snake.DirectionLeft();
@@ -54,9 +46,10 @@ namespace Snake
             return false;
         }
 
-        private bool Logic()
+        protected override bool Logic()
         {
-            _gameField.ClearField();
+            base.Logic();
+
             if (_snake.Head.X == _fruit.X && _snake.Head.Y == _fruit.Y)
             {
                 _fruit.ResetPosition(_rand.Next(_gameField.Width), _rand.Next(_gameField.Height));
@@ -76,23 +69,14 @@ namespace Snake
         }
 
 
-        private void Draw()
+        protected override void Draw()
         {
             _snake.Draw();
             _fruit.Draw();
-            _gameField.Draw();
+            base.Draw();
         }
 
-        public void Run()
-        {
-            while (!_gameOver)
-            {
-                _gameOver = Input();
-                _gameOver = Logic();
-                Draw();
-                System.Threading.Thread.Sleep(100);
-            }
-        }
+        
     }
 
     
