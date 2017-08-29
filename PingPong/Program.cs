@@ -10,8 +10,9 @@ namespace PingPong
     {
         static void Main(string[] args)
         {
-            PingPongGame Game = new PingPongGame(50, 20);
+            PingPongGame Game = new PingPongGame(57, 21);
             Game.Run(0);
+            Console.ReadLine();
         }
     }
 }
