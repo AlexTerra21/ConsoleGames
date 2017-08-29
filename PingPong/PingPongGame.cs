@@ -12,8 +12,11 @@ namespace PingPong
         private Paddle _player1;
         private Paddle _player2;
         private Ball _ball;
+        private int _score1;
+        private int _score2;
         public PingPongGame(int aWidth, int aHeight) : base (aWidth,aHeight)
         {
+            _score1 = _score2 = 0;
             _gameField.FrameColor = ConsoleColor.DarkRed;
             _gameField.FrameSymbol = '█';
             _gameField.DrawFrame();
@@ -42,7 +45,8 @@ namespace PingPong
                     _player2.DirectionDown();
                     break;
                 case ConsoleKey.Spacebar:
-                    _ball.SetDirection((Ball.Direction)_rand.Next(1,7));
+                    if (_ball.Dir == Ball.Direction.Stop)
+                        _ball.SetDirection((Ball.Direction)_rand.Next(1,7));
                     break;
                 case ConsoleKey.Q:
                     return true;
@@ -55,18 +59,6 @@ namespace PingPong
         protected override bool Logic()
         {
             _gameField.ClearField();
-
-            if (_ball.Y == 0) 
-            {
-                if (_ball.Dir == Ball.Direction.LeftUp) _ball.SetDirection(Ball.Direction.LeftDown);
-                else _ball.SetDirection(Ball.Direction.RightDown);
-            }
-
-            if (_ball.Y == _gameField.Height-1)
-            {
-                if (_ball.Dir == Ball.Direction.LeftDown) _ball.SetDirection(Ball.Direction.LeftUp);
-                else _ball.SetDirection(Ball.Direction.RightUp);
-            }
 
             if (_ball.X == 2)
             {
@@ -86,10 +78,27 @@ namespace PingPong
 
             if (_ball.X == 0 || _ball.X == _gameField.Width-1) 
             {
+                if (_ball.X == 0) _score2++;
+                else _score1++;
                 _player1.ResetPosition(1, _gameField.Height / 2);
                 _player2.ResetPosition(_gameField.Width - 2, _gameField.Height / 2);
                 _ball.ResetPosition(_gameField.Width / 2, _gameField.Height / 2);
             }
+
+
+
+            if (_ball.Y == 0)
+            {
+                if (_ball.Dir == Ball.Direction.LeftUp) _ball.SetDirection(Ball.Direction.LeftDown);
+                else _ball.SetDirection(Ball.Direction.RightDown);
+            }
+
+            if (_ball.Y == _gameField.Height - 1)
+            {
+                if (_ball.Dir == Ball.Direction.LeftDown) _ball.SetDirection(Ball.Direction.LeftUp);
+                else _ball.SetDirection(Ball.Direction.RightUp);
+            }
+            
             _player1.Move();
             _player2.Move();
             _ball.Move();
@@ -102,6 +111,8 @@ namespace PingPong
             _player2.Draw();
             _ball.Draw();
             base.Draw();
+            _gameField.PrintScore(String.Format("Player1       {0} : {1}       Player2", _score1, _score2));
+
         }
 
     }
