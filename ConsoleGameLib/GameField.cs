@@ -24,6 +24,8 @@ namespace ConsoleGameLib
             Height = aHeight;
             FrameColor = ConsoleColor.White;
             FrameSymbol = '#';
+            Console.SetWindowSize(Width + 2, Height + 3);
+            Console.SetBufferSize(Width + 2, Height + 3);
             InitField();
         }
 
@@ -45,7 +47,6 @@ namespace ConsoleGameLib
         {
             for (int i = 0; i < Height; i++)
             {
-                //List<string> lRow = new List<string>();
                 for (int j = 0; j < Width; j++)
                 {
                     _field[i][j].Val = " ";
@@ -54,42 +55,31 @@ namespace ConsoleGameLib
             }
         }
 
-        public void Draw()
+        public void DrawFrame()
         {
-            Console.Clear();
             Console.CursorVisible = false;
             Console.ForegroundColor = FrameColor;
             for (int i = 0; i < Width + 2; i++)
-            {
-                Console.Write(FrameSymbol);
-            }
-            Console.WriteLine();
-            //Console.ForegroundColor = ConsoleColor.White;
-            for (int i = 0; i < Height; i++)
-            {
-                for (int j = 0; j < Width + 2; j++)
+                for (int j = 0; j < Height + 2; j++)
                 {
-                    if (j == 0 || j == Width + 1)
+                    if ((j == 0 || j == Height + 1) || (i == 0 || i == Width + 1))
                     {
-                        Console.ForegroundColor = FrameColor;
+                        Console.SetCursorPosition(i, j);
                         Console.Write(FrameSymbol);
-                        //Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = _field[i][j - 1].Color;
-                        Console.Write(_field[i][j - 1].Val);
                     }
                 }
-                Console.WriteLine();
-            }
-            Console.ForegroundColor = FrameColor;
-            for (int i = 0; i < Width + 2; i++)
-            {
-                Console.Write(FrameSymbol);
-            }
-            Console.WriteLine();
-            //Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void Draw()
+        {
+            Console.CursorVisible = false;
+            for (int i = 0; i < Width; i++)
+                for (int j = 0; j < Height; j++)
+                {
+                    Console.ForegroundColor = _field[j][i].Color;
+                    Console.SetCursorPosition(i + 1, j + 1);
+                    Console.Write(_field[j][i].Val);
+                }
         }
     }
 }

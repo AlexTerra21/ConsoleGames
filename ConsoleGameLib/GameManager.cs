@@ -50,7 +50,6 @@ namespace ConsoleGameLib
 
         protected virtual bool Logic()
         {
-            _gameField.ClearField();
             return false;
         }
 
