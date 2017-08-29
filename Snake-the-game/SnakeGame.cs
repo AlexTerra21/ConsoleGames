@@ -16,6 +16,7 @@ namespace Snake
         {
             _gameField.FrameColor = ConsoleColor.Red;
             _gameField.FrameSymbol = (char)9632;
+            _gameField.DrawFrame();
             _snake = new Snake(aWidth / 2, aHeight / 2);
             _snake.SetField(_gameField);
             _fruit = new Fruit(_rand.Next(aWidth), _rand.Next(aHeight));
@@ -48,7 +49,7 @@ namespace Snake
 
         protected override bool Logic()
         {
-            base.Logic();
+            _gameField.ClearField();
 
             if (_snake.Head.X == _fruit.X && _snake.Head.Y == _fruit.Y)
             {
