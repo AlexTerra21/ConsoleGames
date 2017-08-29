@@ -11,9 +11,10 @@ namespace Snake
     {
         private Snake _snake;
         private Fruit _fruit;
-        
+        private int _score;
         public SnakeGame(int aWidth, int aHeight) : base (aWidth,aHeight)
         {
+            _score = 0;
             _gameField.FrameColor = ConsoleColor.Red;
             _gameField.FrameSymbol = (char)9632;
             _gameField.DrawFrame();
@@ -55,6 +56,7 @@ namespace Snake
             {
                 _fruit.ResetPosition(_rand.Next(_gameField.Width), _rand.Next(_gameField.Height));
                 _snake.Eat();
+                _score += 2;
             }
             _snake.Move();
             if (_snake.Head.X > _gameField.Width - 1) _snake.Head.X = 0;
@@ -75,6 +77,7 @@ namespace Snake
             _snake.Draw();
             _fruit.Draw();
             base.Draw();
+            _gameField.PrintScore(String.Format("Score {0}", _score));
         }
 
         
