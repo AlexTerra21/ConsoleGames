@@ -69,6 +69,7 @@ namespace ConsoleGameLib
                 Draw();
                 System.Threading.Thread.Sleep(aDelay);
             }
+            _gameField.PrinGameOver();
         }
     }
 

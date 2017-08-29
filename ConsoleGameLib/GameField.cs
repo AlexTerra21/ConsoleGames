@@ -24,8 +24,8 @@ namespace ConsoleGameLib
             Height = aHeight;
             FrameColor = ConsoleColor.White;
             FrameSymbol = '#';
-            Console.SetWindowSize(Width + 2, Height + 3);
-            Console.SetBufferSize(Width + 2, Height + 3);
+            Console.SetWindowSize(Width + 2, Height + 4);
+            Console.SetBufferSize(Width + 2, Height + 4);
             InitField();
         }
 
@@ -68,6 +68,21 @@ namespace ConsoleGameLib
                         Console.Write(FrameSymbol);
                     }
                 }
+        }
+
+        public void PrintScore(string aScore)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.SetCursorPosition(Width/2 - aScore.Length /2,Height+2);
+            Console.Write(aScore);
+        }
+
+        public void PrinGameOver()
+        {
+            string lGameOverMessage = "GAME OVER!";
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(Width / 2 - lGameOverMessage.Length / 2, Height / 2);
+            Console.Write(lGameOverMessage);
         }
 
         public void Draw()
